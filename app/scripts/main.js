@@ -11,7 +11,7 @@ var App = angular.module('app', ['ngSanitize', 'ui.router']).config(['$stateProv
 				templateUrl: "scripts/common/templates/nav.html"
 			},
 			"footerView@": {
-				templateUrl: "scripts/common/templates/footer.html"
+				templateUrl: "scripts/common/templates/footer.html",
 			}
 		}
 	}).state('main', {

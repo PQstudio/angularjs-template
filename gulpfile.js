@@ -101,7 +101,7 @@ gulp.task('styles', function () {
 
 gulp.task('scripts', function() {
 	return gulp.src('app/scripts/**/*.js')
-		.pipe($.if('*.js', $.uglify({preserveComments: 'some'})))
+		.pipe($.if('*.js', $.uglify({preserveComments: 'some', mangle: false})))
 		.pipe($.concat('main.js'))
 		.pipe(gulp.dest('app/assets/scripts'));
 });
@@ -113,7 +113,7 @@ gulp.task('html', function () {
   return gulp.src('app/**/*.html')
     .pipe(assets)
     // Concatenate And Minify JavaScript
-    .pipe($.if('*.js', $.uglify({preserveComments: 'some'})))
+    .pipe($.if('*.js', $.uglify({preserveComments: 'some', mangle: false})))
     // Remove Any Unused CSS
     // Note: If not using the Style Guide, you can delete it from
     // the next line to only include styles your project uses.
@@ -176,7 +176,7 @@ gulp.task('serve:dist', ['default'], function () {
 
 // Build Production Files, the Default Task
 gulp.task('default', ['clean'], function (cb) {
-  runSequence('styles', 'scripts', ['jshint', 'html', 'images', 'fonts', 'copy'], cb);
+  runSequence('styles', 'scripts', [/*'jshint',*/ 'html', 'images', 'fonts', 'copy'], cb);
 });
 
 // Run PageSpeed Insights
