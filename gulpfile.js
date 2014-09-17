@@ -25,6 +25,7 @@ var $ = require('gulp-load-plugins')();
 var del = require('del');
 var runSequence = require('run-sequence');
 var browserSync = require('browser-sync');
+var modRewrite = require('connect-modrewrite');
 var pagespeed = require('psi');
 var reload = browserSync.reload;
 
@@ -153,7 +154,12 @@ gulp.task('serve', ['styles', 'scripts'], function () {
     // Note: this uses an unsigned certificate which on first access
     //       will present a certificate warning in the browser.
     // https: true,
-    server: ['.tmp', 'app']
+    server: {
+    baseDir: ['.tmp', 'app'],
+    middleware: [
+        modRewrite(['!\.html|\.js|\.css|\.png$ /index.html [L]'])
+    ]
+    }
   });
 
   gulp.watch(['app/**/*.html'], reload);
