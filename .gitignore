@@ -1,6 +1,8 @@
-node_modules/
-.tmp/
-.sass-cache/
-app/bower_components/
-dist/
-app/assets/
+node_modules
+.tmp
+.sass-cache
+app/bower_components
+dist
+app/assets
+.DS_Store
+Thumbs.db
